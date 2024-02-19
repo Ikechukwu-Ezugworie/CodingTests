@@ -1,0 +1,205 @@
+spring:
+  application:
+    name: opendock
+  #H2 demographics as default
+  datasource:
+    {
+      url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL,
+      platform: h2,
+      driver-class-name: org.h2.Driver,
+      username: sa,
+    }
+  jpa:
+    hibernate: { ddl-auto: none }
+    database-platform: { org.hibernate.dialect.H2Dialect }
+    properties:
+      hibernate: { show_sql: true, use_sql_comments: true, format_sql: true }
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  #
+  resources:
+    static-locations: classpath:static
+  #######################################################################################
+  ##                  Database section
+  ## The following section is for demographics configuration.
+  ## The following demographics are supported: Oracle, MS SQL Server, and PostgreSQL.
+  ## Please only use one to avoid startup issues
+  #######################################################################################
+  ##  PostgreSQL:
+  #######################################################################################
+  #  datasource:
+  #     url: jdbc:postgresql://localhost:5432/open_dock
+  #     driver-class-name: org.postgresql.Driver
+  #     username: postgres
+  #     password: password
+  #     hikari:
+  #       auto-commit: false
+  #  jpa:
+  #    demographics-platform: org.hibernate.dialect.PostgreSQL9Dialect
+
+  #######################################################################################
+  ##  SQL Server:
+  #######################################################################################
+  #  datasource:
+  #    url: jdbc:sqlserver://<hostname>:1433;databaseName=<db>
+  #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  #    username: <username>
+  #    password: <password>
+  #  jpa:
+  #    demographics-platform: org.hibernate.dialect.SQLServer2008Dialect
+  #    hibernate:
+  #      ddl-auto: none
+
+  #######################################################################################
+  ##  Oracle DataBase Configuration with SID:
+  #######################################################################################
+  #  datasource:
+  #    url: jdbc:Oracle:thin:@{host}:1521:{SID}
+  #    driver-class-name: Oracle.jdbc.OracleDriver
+  #    username: <username>
+  #    password: <password>
+  #  jpa:
+  #    demographics-platform: org.hibernate.dialect.Oracle12cDialect
+  #    hibernate:
+  #      ddl-auto: none
+
+  #######################################################################################
+  ##  Oracle DataBase Configuration with Service Name:
+  #######################################################################################
+  #  datasource:
+  #    url: jdbc:Oracle:thin:@//{host}:1521/{ServiceName}
+  #    driver-class-name: Oracle.jdbc.OracleDriver
+  #    username: <username>
+  #    password: <password>
+  #  jpa:
+  #    demographics-platform: org.hibernate.dialect.Oracle12cDialect
+  #    hibernate:
+  #      ddl-auto: none
+
+  #######################################################################################
+  ##  MySql DataBase Configuration :
+  #######################################################################################
+  # datasource:
+  #    url: jdbc:mysql://localhost:3306/bioenroll_service?serverTimezone=UTC
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    username: root
+  #    password: password
+  #  jpa:
+  #    demographics-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  #    hibernate:
+  #      ddl-auto: none
+
+  # Make sure your flyway script observes the following naming convention - <Prefix><Version>__<Description>.sql; ex. V1_0_0__biowagon.sql
+  # The version minors/majors must be separated with underscores, while the description part must be separated with two underscores.
+  flyway:
+    enabled: true
+
+server:
+  port: 8500
+
+#HCB service specific configurations
+hcb:
+  services:
+    tier: CLIENT
+    #database/disk/databaseAndDisk
+    persistence: database
+    #    path: C:\Users\HARDCORE\Desktop\jsonData
+    bioenroll:
+      enabled: false
+      persistence: database
+      server:
+        url: http://bioenroll-server-app.hcb/rest/
+    baseurl: http://bioenroll-server-app.npfhq.com/
+    demourl: http://bioenroll-server-app.hcb/rest/
+    devurl: http://dev.bioenroll-server-app.hcb/rest/
+    ##     path: C:\Users\HARDCORE\Desktop\jsonData
+    biorouter:
+      location: FCT
+    k8:
+      enabled: false
+      baseurl: http://bioenroll-server-app.hcb/rest/
+    notification:
+      disk:
+        enabled: true
+  authorization:
+    enabled: false
+
+  security:
+    app-server:
+      enabled: true
+      type: TOMCAT
+      url-patterns: ["/rest/*"]
+      is-strip-domain-enbled: false
+    unsecured:
+      enabled: true
+      username: admin
+
+    iam:
+      kerberos:
+        service-principal: HTTP/bioenroll-server-app.hcb@HARDCOREBIOMETRIC.COM
+        keytab-location: /keytab/kbrenrollmentservice.keytab
+        enabled: false
+      ldap:
+        url: ldap://HARDCOREBIOMETRIC.COM:389
+        authentication:
+          domain-name: HARDCOREBIOMETRIC.COM
+          search-filter:
+          enabled: false
+        search:
+          base-dn: DC=HARDCOREBIOMETRIC,DC=COM
+          user-dn: ldapuser@HARDCOREBIOMETRIC.COM
+          password: Hardcore0
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework: INFO
+    org.glassfish.jersey: ERROR
+    org.reflections: ERROR
+    com.hcb.services.bioenroll: DEBUG
+    com.hcb.services.configuration: INFO
+    org.h2: DEBUG
+    org.flywaydb: DEBUG
+    com.hcb.services.common.discovery: DEBUG
+    com.hcb.services.toolkit: DEBUG
+  path: ${user.home}/hcb/services/${spring.application.name}/logs
+  file: ${logging.path}/${spring.application.name}.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{[%-5level]} %X{CORRELATION_ID} %X{TENANT}:%X{USER} %X{SERVICE} %style{[%t]}{magenta} %style{%c:%M}{cyan} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %X{CORRELATION_ID} %X{TENANT}:%X{USER} [%t] %c:%M - %msg%n"
+
+management:
+  health:
+    ldap:
+      enabled: false
+
+hazelcast:
+  cluster-name: bioroutercluster
+  instance-name: biorouter
+  map-name: instanceMap
+  management-center:
+    scripting-enabled: false
+  network:
+    port:
+      auto-increment: true
+      port-count: 100
+      port: 5701
+    outbound-ports:
+      # Allowed port range when connecting to other nodes.
+      # 0 or * means use system provided port.
+      - 0
+    join:
+      kubernetes:
+        enabled: false
+      auto-detection:
+        enabled: true
+        namespace: default
+        service-name: bioenroll-server-app-hazelcast
+      multicast:
+        enabled: true
+        multicast-group: 224.2.2.3
+        multicast-port: 54327
+        multicast-time-to-live: 32
+        multicast-timeout-seconds: 5

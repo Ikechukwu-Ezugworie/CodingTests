@@ -1,0 +1,11 @@
+
+k
+java:S1149!"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÑÖÙƒýÿÿÿÿ
+V	java:S125
+"<This block of commented-out lines of code should be removed.(ÞÕÄ£ÿÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(®ýáëûÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(÷Ï®¢ýÿÿÿÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ

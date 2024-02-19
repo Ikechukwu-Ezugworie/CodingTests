@@ -1,0 +1,10 @@
+
+V
+java:S2864"4Iterate over the "entrySet" instead of the "keySet".(Üì—úşÿÿÿÿ8û–—ÎŸ1
+T	java:S106"9Replace this use of System.out or System.err by a logger.(§¼„l8¯¦ÎŸ1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ı–—ÎŸ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ı–—ÎŸ1
+L
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8ı–—ÎŸ1

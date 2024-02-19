@@ -1,0 +1,15 @@
+test\LoggingAspect.class
+test\LongestWord.class
+test\Main.class
+test\CoinDeterminer.class
+test\BracketCombinations.class
+test\WordTransformation.class
+test\PalindromeChecker.class
+test\IsomorphicStrings.class
+test\ReversePolish.class
+test\MaximumThroughputHackerrank.class
+test\WordLadder.class
+test\StringScramble.class
+test\MinimumSlidingWindow.class
+test\BracketMatcher.class
+test\RotateArray.class

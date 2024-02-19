@@ -1,0 +1,18 @@
+
+k	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞŠ´Ãûÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ÁÛÁ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¬ã‰ùÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¬ã‰ùÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ª¥şÿÿÿÿ
+W
+java:S1854*"ARemove this useless assignment to local variable "remainingSize".(­Ñò¼
+F
+java:S1481"+Remove this unused "result" local variable.(Ó°¬Ñøÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ªúĞ
+H
+java:S1481*"2Remove this unused "remainingSize" local variable.(­Ñò¼
+M	java:S1065"9Replace this use of System.out or System.err by a logger.(—µ k
+N	java:S1066"9Replace this use of System.out or System.err by a logger.(æÍòÉ
+M
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ

@@ -1,0 +1,12 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ÈŽÞð
+F
+java:S1659"+Declare "secondOperand" on a separate line.(¯Ñ—ñüÿÿÿÿ
+H
+java:S1481
+"-Remove this unused "operator" local variable.(ÐÉÇàÿÿÿÿÿ
+L
+java:S1481"1Remove this unused "firstOperand" local variable.(¯Ñ—ñüÿÿÿÿ
+M
+java:S1481"2Remove this unused "secondOperand" local variable.(¯Ñ—ñüÿÿÿÿ

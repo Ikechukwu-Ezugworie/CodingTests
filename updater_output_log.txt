@@ -1,0 +1,24 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/HCB/Complaints%20Journal/client-app-updater-1.0-SNAPSHOT.jar!/BOOT-INF/lib/slf4j-simple-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/HCB/Complaints%20Journal/client-app-updater-1.0-SNAPSHOT.jar!/BOOT-INF/lib/log4j-slf4j-impl-2.17.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/HCB/Complaints%20Journal/client-app-updater-1.0-SNAPSHOT.jar!/BOOT-INF/lib/logback-classic-1.2.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.SimpleLoggerFactory]
+[main] INFO com.hcb.installer.ClientAppUpdater - File not found: version can not be found from the directory
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:108)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:65)
+Caused by: java.lang.RuntimeException: java.io.FileNotFoundException: version can not be found from the directory
+	at com.hcb.installer.ClientAppUpdater.main(ClientAppUpdater.java:65)
+	... 8 more
+Caused by: java.io.FileNotFoundException: version can not be found from the directory
+	at com.hcb.installer.ClientAppUpdater.findFileInDirectory(ClientAppUpdater.java:335)
+	at com.hcb.installer.ClientAppUpdater.startUpdate(ClientAppUpdater.java:78)
+	at com.hcb.installer.ClientAppUpdater.main(ClientAppUpdater.java:54)
+	... 8 more
