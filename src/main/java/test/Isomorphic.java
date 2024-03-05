@@ -1,10 +1,16 @@
 package test;
 
+import com.hcb.services.utils.Base64Converter;
+
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Isomorphic {
     public static void main(String[] args) {
-        System.out.println(isIsomorphic("badc", "baba"));
+//        System.out.println(isIsomorphic("badc", "baba"));
+        String uuid = "404b6368-78a8-402e-aecd-2bdf61efcc79";
+        String base64 = Base64Converter.getBase64(uuid);
+        System.out.println(base64);
     }
 
 //    public static boolean isIsomorphic(String firstString, String secondString){
